@@ -5,14 +5,18 @@ syntax on
 filetype plugin indent on
 
 if filereadable(expand("~/.vimrc_background"))
-	let base16colorspace=256
-	source ~/.vimrc_background
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
 
 colorscheme base16-railscasts
 
 "Reduce lag with Esc
 set timeout timeoutlen=1000 ttimeoutlen=10
+
+"Indent settings
+set tabstop=4
+set shiftwidth=4
 
 "Status settings
 set laststatus=2
@@ -36,11 +40,12 @@ set wrap
 set textwidth=0 wrapmargin=0
 set fo-=t
 set number
-"set colorcolumn=80
 set relativenumber
+
+set colorcolumn=80
 highlight clear SignColumn
 highlight VertSplit    ctermbg=236
-highlight ColorColumn  ctermbg=237
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
 highlight LineNr       ctermbg=236 ctermfg=240
 highlight CursorLineNr ctermbg=236 ctermfg=240
 highlight CursorLine   ctermbg=236
