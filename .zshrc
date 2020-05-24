@@ -1,74 +1,31 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/loki/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-# Base16 color
-# Link: https://github.com/chriskempson/base16-shell
+########################## Base16 Color ##########################
+# Base16 Shell: https://github.com/chriskempson/base16-shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 base16_railscasts
 
-# ZSH Theme: Powerlevel9k
-# Link: https://github.com/bhilburn/powerlevel9k
-ZSH_THEME="powerlevel9k/powerlevel9k"
+########################## OH MY ZSH Settings ##########################
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
-POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%} "
-
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-
-POWERLEVEL9K_TODO_BACKGROUND="black"
-POWERLEVEL9K_TODO_FOREGROUND="249"
-
-POWERLEVEL9K_DIR_HOME_BACKGROUND="black"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="249"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="black"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="249"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="black"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="249"
-
-POWERLEVEL9K_STATUS_OK_BACKGROUND="black"
-POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="black"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-
-POWERLEVEL9K_NVM_BACKGROUND="black"
-POWERLEVEL9K_NVM_FOREGROUND="249"
-POWERLEVEL9K_NVM_VISUAL_IDENTIFIER_COLOR="green"
-
-POWERLEVEL9K_RVM_BACKGROUND="black"
-POWERLEVEL9K_RVM_FOREGROUND="249"
-POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="red"
-
-POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND="black"
-POWERLEVEL9K_LOAD_WARNING_BACKGROUND="black"
-POWERLEVEL9K_LOAD_NORMAL_BACKGROUND="black"
-POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND="249"
-POWERLEVEL9K_LOAD_WARNING_FOREGROUND="249"
-POWERLEVEL9K_LOAD_NORMAL_FOREGROUND="249"
-POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_COLOR="red"
-POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="yellow"
-POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="green"
-
-POWERLEVEL9K_RAM_BACKGROUND="black"
-POWERLEVEL9K_RAM_FOREGROUND="249"
-POWERLEVEL9K_RAM_ELEMENTS=(ram_free)
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=('status' 'todo' 'context' 'dir' 'vcs')
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('nvm' 'rvm' 'load' 'ram_joined')
-
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -86,8 +43,14 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('nvm' 'rvm' 'load' 'ram_joined')
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -123,7 +86,13 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('nvm' 'rvm' 'load' 'ram_joined')
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+	colored-man-pages
+	extract
+	web-search
+	git
+	fzf
+	zsh-syntax-highlighting
+	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -145,9 +114,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -157,29 +123,17 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Aliases for different commands and scripts.
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+########################## Aliases ##########################
 alias c='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-
-# Directory shortcuts
 alias d='cd ~/Desktop'
-alias script='cd /usr/local/bin/'
-alias leetcode='cd ~/Documents/Github/leetcode-solutions'
-alias gittest='cd ~/Documents/GitTest'
-alias github='cd ~/Documents/Github'
-alias py='python3'
 
-# My custom scripts
-alias newleet='/usr/local/bin/newleet'
-
-# GOPATH setting
-export GOPATH=$HOME/Go
-export GOBIN=$GOPATH/bin
-export PYTHONPATH=$PYTHONPATH:~/Tensorflow/models/research:~/Tensorflow/models/research/slim
-source ~/.fonts/*.sh
-
-# Syntax checker
-# Link: https://github.com/zsh-users/zsh-syntax-highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+########################## Paths ##########################
+# CUDA
+export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}

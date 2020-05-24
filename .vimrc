@@ -1,15 +1,9 @@
+"Pathogen setting: https://github.com/tpope/vim-pathogen
 filetype off
 execute pathogen#infect()
 execute pathogen#helptags()
 syntax on
 filetype plugin indent on
-
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-colorscheme base16-railscasts
 
 "Reduce lag with Esc
 set timeout timeoutlen=1000 ttimeoutlen=10
@@ -42,10 +36,10 @@ set fo-=t
 set number
 set relativenumber
 
-set colorcolumn=80
+set colorcolumn=100
 highlight clear SignColumn
 highlight VertSplit    ctermbg=236
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
+highlight ColorColumn  ctermbg=235 guibg=#2c2d27
 highlight LineNr       ctermbg=236 ctermfg=240
 highlight CursorLineNr ctermbg=236 ctermfg=240
 highlight CursorLine   ctermbg=236
@@ -78,9 +72,26 @@ ino <up> <Nop>
 "Map Esc to "jk"
 inoremap jk <Esc>`^
 
-"Cancel markdown folding
-let g:vim_markdown_folding_disabled = 1
+"Remap leader key to , key
+:let mapleader = ","
 
+"""""""""""""""""""""""""""""Plugins"""""""""""""""""""""""""""""
 "Vim-airline settings
-let g:airline_theme='base16'
+let g:airline_theme='raven'
 hi Normal guibg=NONE ctermbg=NONE
+
+"NerdTree open automatically
+"autocmd vimenter * NERDTree
+
+"Syntactic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"VIM Markdown Cancel markdown folding
+let g:vim_markdown_folding_disabled = 1
