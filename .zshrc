@@ -132,8 +132,14 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias d='cd ~/Desktop'
+alias p='cd ~/projects'
+alias py='python3.7'
+alias pip37='python3.7 -m pip'
 
 ########################## Paths ##########################
 # CUDA
 export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# .local bin directory
+export PATH=$PATH:~/.local/bin
