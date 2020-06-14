@@ -93,6 +93,7 @@ plugins=(
 	fzf
 	zsh-syntax-highlighting
 	zsh-autosuggestions
+	poetry
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -133,8 +134,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias d='cd ~/Desktop'
 alias p='cd ~/projects'
+alias work='cd ~/work'
 alias py='python3.7'
 alias pip37='python3.7 -m pip'
+alias f='nautilus .'
 
 ########################## Paths ##########################
 # CUDA
@@ -143,3 +146,19 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 
 # .local bin directory
 export PATH=$PATH:~/.local/bin
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/loki/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/loki/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/loki/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/loki/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
