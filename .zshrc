@@ -134,7 +134,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias d='cd ~/Desktop'
 alias p='cd ~/projects'
-alias work='cd ~/work'
 alias py='python3.7'
 alias pip37='python3.7 -m pip'
 alias f='nautilus .'
@@ -146,6 +145,9 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 
 # .local bin directory
 export PATH=$PATH:~/.local/bin
+
+# Go bin directory
+export PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
