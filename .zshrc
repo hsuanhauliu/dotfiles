@@ -94,9 +94,12 @@ plugins=(
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 	poetry
+	golang
+	redis-cli
+	docker
+	gitignore
+	history
 )
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -126,17 +129,23 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# Activate FZF ZSH
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_BASE=~/.fzf
+
+source $ZSH/oh-my-zsh.sh
 
 ########################## Aliases ##########################
-alias c='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias c='clear'
 alias d='cd ~/Desktop'
-alias p='cd ~/projects'
+alias f='nautilus .'
 alias py='python3.7'
 alias pip37='python3.7 -m pip'
-alias f='nautilus .'
 
 ########################## Paths ##########################
 # CUDA
@@ -148,19 +157,4 @@ export PATH=$PATH:~/.local/bin
 
 # Go bin directory
 export PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/loki/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/loki/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/loki/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/loki/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
