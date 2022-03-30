@@ -1,9 +1,21 @@
-"Pathogen setting: https://github.com/tpope/vim-pathogen
-filetype off
-execute pathogen#infect()
-execute pathogen#helptags()
-syntax on
-filetype plugin indent on
+"Plug-ins
+call plug#begin()
+Plug 'airblade/vim-gitgutter'
+Plug 'jez/vim-superman'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'plasticboy/vim-markdown'
+Plug 'sirver/ultisnips'
+Plug 'scrooloose/syntastic'
+Plug 'easymotion/vim-easymotion'
+Plug 'fatih/vim-go'
+Plug 'klen/python-mode'
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
 
 "Reduce lag with Esc
 set timeout timeoutlen=1000 ttimeoutlen=10
@@ -75,13 +87,23 @@ inoremap jk <Esc>`^
 "Remap leader key to , key
 :let mapleader = ","
 
+"Map pane navigation to ctrl-[hjkl]
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
 """""""""""""""""""""""""""""Plugins"""""""""""""""""""""""""""""
 "Vim-airline settings
 let g:airline_theme='raven'
 hi Normal guibg=NONE ctermbg=NONE
 
-"NerdTree open automatically
-"autocmd vimenter * NERDTree
+"NerdTree settings
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 "Syntactic settings
 set statusline+=%#warningmsg#
@@ -96,3 +118,4 @@ let g:syntastic_check_on_wq = 0
 
 "VIM Markdown Cancel markdown folding
 let g:vim_markdown_folding_disabled = 1
+
