@@ -1,7 +1,9 @@
 #! /bin/bash
 
+set -e
+
 # Install packages
-sudo apt install git vim zsh tmux xsel # The tmux-yank plugin requires xsel or xclip to be installed (on Ubuntu).
+sudo apt -y install git vim zsh tmux xsel # The tmux-yank plugin requires xsel or xclip to be installed (on Ubuntu).
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cp .vimrc .zshrc .tmux.conf ~/
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
