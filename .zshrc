@@ -8,14 +8,6 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-########################## Base16 Color ##########################
-# Base16 Shell: https://github.com/chriskempson/base16-shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-base16_railscasts
-
 ########################## OH MY ZSH Settings ##########################
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -87,18 +79,18 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	colored-man-pages
-	extract
-	web-search
-	git
-	fzf
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-	poetry
-	golang
-	redis-cli
 	docker
+	extract
+	fzf
+	git
 	gitignore
+	golang
 	history
+	poetry
+	redis-cli
+	web-search
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 # User configuration
@@ -137,24 +129,21 @@ export FZF_BASE=~/.fzf
 
 source $ZSH/oh-my-zsh.sh
 
-########################## Aliases ##########################
+# ----- Aliases -----
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias c='clear'
 alias d='cd ~/Desktop'
-alias f='nautilus .'
-alias py='python3.7'
-alias pip37='python3.7 -m pip'
 
-########################## Paths ##########################
-# CUDA
-export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+alias c='clear'
 
-# .local bin directory
-export PATH=$PATH:~/.local/bin
+# ----- Env Vars -----
+# Golang
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$GOBIN:$HOME/.local/bin/:$PATH
 
-# Go bin directory
-export PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

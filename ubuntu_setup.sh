@@ -15,7 +15,7 @@ git clone --depth 1 https://github.com/chriskempson/base16-shell.git ~/.config/b
 ## Tmux plug-in manager. Install via ctrl+a+I.
 git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-## VIM plug-in manager. Install via :PlugInstall command inside of VIM.
+## VIM plug-in manager. Install plugins via :PlugInstall command inside of VIM.
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ## ZSH plug-ins

@@ -1,22 +1,52 @@
-"Plug-ins
+" ----- Plug-ins -----
+" Install plugins with :PlugInstall command in vim
+" :PlugUpdate to update
 call plug#begin()
-Plug 'airblade/vim-gitgutter'
-Plug 'jez/vim-superman'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'plasticboy/vim-markdown'
+Plug 'easymotion/vim-easymotion'
+Plug 'jez/vim-superman'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-surround'
-Plug 'plasticboy/vim-markdown'
-Plug 'sirver/ultisnips'
 Plug 'scrooloose/syntastic'
-Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go'
 Plug 'klen/python-mode'
 Plug 'junegunn/fzf.vim'
-
+Plug 'alessandroyorba/alduin'	"color scheme
 call plug#end()
 
+"Color Scheme
+colorscheme alduin
+let g:airline_theme='alduin'
+hi Normal guibg=NONE ctermbg=NONE
+let g:alduin_Shout_Dragon_Aspect = 1
+let g:airline#extensions#tabline#enabled = 1
+
+"NerdTree settings
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let g:NERDTreeHijackNetrw=0		" hide nerdtree by default
+nmap <F6> :NERDTreeToggle<CR>	" F6 to toggle nerdtree on and off
+
+"Syntactic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_python_checkers=['flake8']
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"VIM Markdown Cancel markdown folding
+let g:vim_markdown_folding_disabled = 1
+
+" ----- General Settings -----
 "Reduce lag with Esc
 set timeout timeoutlen=1000 ttimeoutlen=10
 
@@ -81,7 +111,7 @@ ino <right> <Nop>
 ino <left> <Nop>
 ino <up> <Nop>
 
-"Map Esc to "jk"
+"Map Esc to `j + k`
 inoremap jk <Esc>`^
 
 "Remap leader key to , key
@@ -95,27 +125,4 @@ nnoremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
-
-"""""""""""""""""""""""""""""Plugins"""""""""""""""""""""""""""""
-"Vim-airline settings
-let g:airline_theme='raven'
-hi Normal guibg=NONE ctermbg=NONE
-
-"NerdTree settings
-autocmd VimEnter * NERDTree | wincmd p
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-"Syntactic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_python_checkers=['flake8']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-"VIM Markdown Cancel markdown folding
-let g:vim_markdown_folding_disabled = 1
 
