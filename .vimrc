@@ -15,22 +15,26 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
 Plug 'fatih/vim-go'
 Plug 'klen/python-mode'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'alessandroyorba/alduin'	"color scheme
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'alessandroyorba/alduin'	
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 "Color Scheme
+"Try different color themes in this folder:
+"~/.vim/plugged/vim-airline-themes/autoload/airline/themes
 colorscheme alduin
-let g:airline_theme='alduin'
+let g:airline_theme='bubblegum'
 hi Normal guibg=NONE ctermbg=NONE
 let g:alduin_Shout_Dragon_Aspect = 1
 let g:airline#extensions#tabline#enabled = 1
 
 "NerdTree settings
-autocmd VimEnter * NERDTree | wincmd p
+"autocmd VimEnter * NERDTree | wincmd p	"enable by default
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-let g:NERDTreeHijackNetrw=0		" hide nerdtree by default
-nmap <F6> :NERDTreeToggle<CR>	" F6 to toggle nerdtree on and off
+map <C-n> :NERDTreeToggle<CR>	"Ctrl + n to toggle
 
 "Syntactic settings
 set statusline+=%#warningmsg#
@@ -45,6 +49,9 @@ let g:syntastic_check_on_wq = 0
 
 "VIM Markdown Cancel markdown folding
 let g:vim_markdown_folding_disabled = 1
+
+"Indent Guides
+let g:indent_guides_enable_on_vim_startup = 1
 
 " ----- General Settings -----
 "Reduce lag with Esc

@@ -9,6 +9,10 @@ cp .vimrc .zshrc .tmux.conf ~/
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# iTerm color scheme
+# Others: https://iterm2colorschemes.com
+(curl -Ls https://raw.githubusercontent.com/sindresorhus/iterm2-snazzy/main/Snazzy.itermcolors > /tmp/Snazzy.itermcolors && open /tmp/Snazzy.itermcolors)
+
 # Base16-shell color theme
 git clone --depth 1 https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 

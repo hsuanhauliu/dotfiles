@@ -4,16 +4,21 @@ Configuration and setup script for Vim, Tmux, and Zsh.
 
 ## Installation
 
+1. Install [iTerm2](https://iterm2.com/).
 1. Clone this repo and run the setup script.
-```bash
-git clone https://github.com/hsuanhauliu/dotfiles.git
-cd dotfiles
-./setup.sh
-```
 
-2. Press `prefix + I` to install all TMUX plugins through tpm inside of a tmux session.
-3. Download Meslo Nerd Font from [here](https://github.com/romkatv/powerlevel10k#manual-font-installation) then change your shell settings to use the font.
-4. `p10k configure` to configure your theme.
+    ```bash
+    git clone https://github.com/hsuanhauliu/dotfiles.git
+    cd dotfiles
+    ./ubuntu_setup.sh
+    ```
+
+1. Press `prefix + I` to install all TMUX plugins through tpm inside of a tmux session.
+1. Download Meslo Nerd Font from [here](https://github.com/romkatv/powerlevel10k#manual-font-installation) then change your shell settings to use the font.
+1. Change your iTerm2 font to Meslo and color preset to Snazzy.
+    Under Settings > Profiles > Text > Font
+    Under Settings > Profiles > Colors > Color Presets: Snazzy
+1. [Optional] `p10k configure` to configure your theme.
 
 ### Vim Plugin List
 
